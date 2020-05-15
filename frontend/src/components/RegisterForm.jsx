@@ -3,44 +3,14 @@ import { useForm } from "react-hook-form";
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
 
-const REGISTER_AUTHOR = gql`
-    mutation register(
-        $name: String!
-        $email: String!
-        $password: String!
-    ){
-        register(
-            registerInput: {
-                name: $name
-                email: $email
-                password: $password
-            }
-        ){
-            id email username
-        }
-    }
-`;
+
 
 const RegisterForm = () => {
 
     const { handleSubmit, register, errors } = useForm();
-    const [author, setAuthor] = useState();
-
-    const [addUser, {loading}] = useMutation(REGISTER_AUTHOR, {
-        update(proxy, result){
-            console.log(result);
-        },
-        variables: {
-            name: "Paloma",
-            email: "paloma@gmail.com",
-            password: "hola"
-        }
-    })
 
     const onSubmit = values => {
         console.log(values);
-        setAuthor(values);
-        addUser();
     };
 
     
@@ -86,6 +56,7 @@ const RegisterForm = () => {
 
             <button type="submit">Submit</button>
         </form>
+        
     );
 };
 
