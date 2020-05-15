@@ -1,0 +1,31 @@
+type Mutation{
+    register(name: String!, email: String!, password: String!): Author!
+    login(email: String!, password: String!): ID!
+    logout(email: String!, token: ID!): ID
+    publish(title: String!, description: String!, paragraphs: [String!], email: String!, token: ID!): Post!
+    remove(id: ID!, email: String!, token: ID!): Post!
+    setPostImportance(id: ID!, is_important: Boolean!, email: String!, token: ID!): Post!
+}
+
+type Query{
+    ok: String!
+    getPosts: [Post!]
+}
+
+type Author{
+    _id: ID!
+    name: String!
+    email: String!
+    password: String!
+    token: ID
+    posts: [Post!]
+}
+
+type Post{
+    _id: ID!
+    title: String!
+    description: String!
+    paragraphs: [String!]
+    is_important: Boolean!
+    author: Author!
+}
