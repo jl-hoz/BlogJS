@@ -30,7 +30,11 @@ const RegisterForm = () => {
         update(proxy, result){
             console.log(result);
         },
-        variables: author
+        variables: {
+            name: "Paloma",
+            email: "paloma@gmail.com",
+            password: "hola"
+        }
     })
 
     const onSubmit = values => {
