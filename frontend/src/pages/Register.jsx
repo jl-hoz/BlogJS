@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
+import RegisterForm from '../components/RegisterForm';
 
 const Register = () => {
 
@@ -7,6 +8,7 @@ const Register = () => {
         <div>
             <h1>Register</h1>
             <NavBar></NavBar>
+            <RegisterForm></RegisterForm>
         </div>
     )
 };

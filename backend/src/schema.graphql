@@ -10,6 +10,7 @@ type Mutation{
 type Query{
     ok: String!
     getPosts: [Post!]
+    getImportantPosts: [Post!]
 }
 
 type Author{

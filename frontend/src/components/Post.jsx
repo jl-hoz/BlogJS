@@ -2,9 +2,10 @@ import React from "react";
 import './Style.css';
 
 const Post = props => {
-    const {title, description, paragraphs, author} = props.data;
+    const {title, description, paragraphs, author, is_important} = props.data;
     return (
-        <div className="Post">
+        <div className={is_important ? "ImportantPost" : "Post"}>
+            <p>{is_important ? "Post Destacado" : null}</p>
             <h2>{title}</h2>
             {description ? <h3>{description}</h3> : null}
             <p>Author: <b>{author.name}</b></p>

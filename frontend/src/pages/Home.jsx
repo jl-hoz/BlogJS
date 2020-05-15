@@ -15,7 +15,18 @@ const FETCH_POSTS = gql`
             author{
                 name
             }
-    }
+            is_important
+        }
+        getImportantPosts{
+            title
+            _id
+            description
+            paragraphs
+            author{
+                name
+            }
+            is_important
+        }
     }
 `;
 
@@ -38,8 +49,14 @@ const Home = () => {
             <h1>Home</h1>
             <NavBar></NavBar>
             {data && selectedPost === null? 
-                data.getPosts.map(post => {
+                data.getImportantPosts.map(post => {
                     return <MinPost data={post} setSelectedPost={handleClickInPost} key={post._id}></MinPost>
+                })
+            : null}
+            {data && selectedPost === null? 
+                data.getPosts.map(post => {
+                    const newPost = {...post, is_important: false};
+                    return <MinPost data={newPost} setSelectedPost={handleClickInPost} key={post._id}></MinPost>
                 }) 
             : null}
             {data && selectedPost ? <Post data={selectedPost} setSelectedPost={handleClickInPost} key={data._id}></Post> : null}
